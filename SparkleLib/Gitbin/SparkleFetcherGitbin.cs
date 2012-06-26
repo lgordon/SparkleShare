@@ -329,7 +329,7 @@ namespace SparkleLib.Gitbin {
             // git-bin filter    
             config = config.Replace ("[remote \"origin\"]" + n,
                 "[filter \"bin\"]" + n +
-                "\clean = \"git bin clean %f\"" + n +
+                "\tclean = \"git bin clean %f\"" + n +
                 "\tsmudge = \"git bin smudge"\" + n +
                 "[remote \"origin\"]" + n);   
             
