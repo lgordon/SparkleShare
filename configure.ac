@@ -136,6 +136,7 @@ SparkleLib/AssemblyInfo.cs
 SparkleLib/Defines.cs
 SparkleLib/Makefile
 SparkleLib/Git/Makefile
+SparkleLib/Gitbin/Makefile
 SparkleShare/Common/Makefile
 SparkleShare/Common/HTML/Makefile
 SparkleShare/Common/Plugins/Makefile
