@@ -189,11 +189,11 @@ namespace SparkleLib.Gitbin {
                 Commit (message);
             }
 			
-			//TODO: git bin push (need to see if git bin push supports --progress)
-			//gitbin will need to have support for empty binary files added
-			//scp backend ideally will be needed for git-bin
-			SparkleGit gitbin = new SparkleGit (LocalPath,
-				"bin"
+		//TODO: git bin push (need to see if git bin push supports --progress)
+		//gitbin will need to have support for empty binary files added
+		//scp backend ideally will be needed for git-bin
+		SparkleGit gitbin = new SparkleGit (LocalPath,
+		"bin" +
                 "push" +
                 "\"" + RemoteUrl + "\" master");
 
@@ -201,7 +201,7 @@ namespace SparkleLib.Gitbin {
             gitbin.Start ();
             //need to parse the output and monitor progress
             //[git-bin] Uploading 1 chunks...
-  			//[0/1] -> 0..10..20..30..40..50..60..70..80..90..100
+            //[0/1] -> 0..10..20..30..40..50..60..70..80..90..100
             gitbin.WaitForExit ();
 
             SparkleGit git = new SparkleGit (LocalPath,

@@ -339,8 +339,8 @@ namespace SparkleLib.Gitbin {
             config = config.Replace ("[remote \"origin\"]" + n,
                 "[git-bin]" + n +    
                 "\ts3bucket = \"your bucket name\"" + n +
-                "\ts3key = \"your key"" + n +
-                "\ts3secretKey = \"your secret key"" + n +
+                "\ts3key = \"your key\"" + n +
+                "\ts3secretKey = \"your secret key\"" + n +
                 "\tchunkSize = 1m" + n +
                 "[remote \"origin\"]" + n);    
 
