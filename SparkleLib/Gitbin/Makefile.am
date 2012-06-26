@@ -1,4 +1,4 @@
-ASSEMBLY = SparkleLib.gitbin
+ASSEMBLY = SparkleLib.Gitbin
 TARGET = library
 
 LINK = -r:$(DIR_BIN)/SparkleLib.dll
