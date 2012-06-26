@@ -461,10 +461,10 @@ namespace SparkleShare {
                         
 						TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
 						
-                        Buttons.Add (finish_button);
                         Buttons.Add (cancel_button);
-
-                                                                                                    
+                        Buttons.Add(finish_button);
+                                                   
+                         
                         Controller.UpdateProgressBarEvent += delegate (double percentage) {
                             Dispatcher.Invoke ((Action) delegate {
                                 progress_bar.Value = percentage;	
@@ -481,7 +481,7 @@ namespace SparkleShare {
                         
                         
                     case PageType.Error: {
-                        Header      = "Something went wrong…";
+                        Header      = "Oops! Something went wrong…";
                         Description = "Please check the following:";
 
 						TextBlock help_block = new TextBlock () {
@@ -490,7 +490,7 @@ namespace SparkleShare {
 						};
 
                         TextBlock bullets_block = new TextBlock () {
-                            Text = "•\n\n•"
+                            Text = "•\n\n\n•"
                         };
 
                         help_block.Inlines.Add (new Bold (new Run (Controller.PreviousUrl)));
