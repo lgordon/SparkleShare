@@ -44,6 +44,23 @@ namespace SparkleLib.Gitbin {
             else
                 StartInfo.Arguments = "--exec-path=\"" + ExecPath + "\" " + args;
         }
+        
+        public SparkleGitbin (string path, string args) : base ()
+        {
+            Path = LocateGitbin ();
+
+            EnableRaisingEvents              = true;
+            StartInfo.FileName               = Path;
+            StartInfo.RedirectStandardOutput = true;
+            StartInfo.UseShellExecute        = false;
+            StartInfo.WorkingDirectory       = path;
+            StartInfo.CreateNoWindow         = true;
+
+            if (string.IsNullOrEmpty (ExecPath))
+                StartInfo.Arguments = args;
+            else
+                StartInfo.Arguments = "--exec-path=\"" + ExecPath + "\" " + args;
+        }
 
 
         new public void Start ()
@@ -71,6 +88,25 @@ namespace SparkleLib.Gitbin {
                 "/usr/local/bin/git",
                 "/opt/local/bin/git",
                 "/usr/local/git/bin/git"
+            };
+
+            foreach (string path in possible_git_paths)
+                if (File.Exists (path))
+                    return path;
+
+            return "git";
+        }
+        
+        private string LocateGitbin ()
+        {
+            if (!string.IsNullOrEmpty (Path))
+                return Path;
+
+            string [] possible_git_paths = new string [] {
+                "/usr/bin/git-bin",
+                "/usr/local/bin/git-bin",
+                "/opt/local/bin/git-bin",
+                "/usr/local/git/bin/git-bin"
             };
 
             foreach (string path in possible_git_paths)
