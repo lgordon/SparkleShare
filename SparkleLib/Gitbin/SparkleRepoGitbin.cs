@@ -314,7 +314,7 @@ namespace SparkleLib.Gitbin {
                     }
 
                 } else {
-                    SparkleHelpers.DebugInfo ("Git", Name + " | " + line);
+                    SparkleHelpers.DebugInfo ("Git-bin", Name + " | " + line);
                 }
                 
 
