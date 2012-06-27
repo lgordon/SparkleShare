@@ -150,7 +150,7 @@ namespace SparkleLib.Gitbin {
 
         public override bool HasRemoteChanges {
             get {
-                SparkleHelpers.DebugInfo ("Git", Name + " | Checking for remote changes...");
+                SparkleHelpers.DebugInfo ("Gitbin", Name + " | Checking for remote changes...");
 
                 string current_revision = CurrentRevision;
                 SparkleGit git = new SparkleGit (LocalPath, "ls-remote --exit-code \"" + RemoteUrl + "\" master");
@@ -164,14 +164,14 @@ namespace SparkleLib.Gitbin {
                 string remote_revision = git.StandardOutput.ReadToEnd ().Substring (0, 40);
     
                 if (!remote_revision.StartsWith (current_revision)) {
-                    SparkleHelpers.DebugInfo ("Git",
+                    SparkleHelpers.DebugInfo ("Gitbin",
                         Name + " | Remote changes detected (local: " +
                         current_revision + ", remote: " + remote_revision + ")");
 
                     return true;
 
                 } else {
-                    SparkleHelpers.DebugInfo ("Git",
+                    SparkleHelpers.DebugInfo ("Gitbin",
                         Name + " | No remote changes detected (local+remote: " + current_revision + ")");
 
                     return false;
@@ -248,7 +248,7 @@ namespace SparkleLib.Gitbin {
                     }
 
                 } else {
-                    SparkleHelpers.DebugInfo ("Git", Name + " | " + line);
+                    SparkleHelpers.DebugInfo ("Gitbin", Name + " | " + line);
                 }
 
                 if (number >= percentage) {
@@ -401,7 +401,7 @@ namespace SparkleLib.Gitbin {
             git.Start ();
             git.WaitForExit ();
 
-            SparkleHelpers.DebugInfo ("Git", Name + " | Changes staged");
+            SparkleHelpers.DebugInfo ("Gitbin", Name + " | Changes staged");
         }
 
 
@@ -454,12 +454,12 @@ namespace SparkleLib.Gitbin {
             git.WaitForExit ();
 
             if (git.ExitCode != 0) {
-                SparkleHelpers.DebugInfo ("Git", Name + " | Conflict detected, trying to get out...");
+                SparkleHelpers.DebugInfo ("Gitbin", Name + " | Conflict detected, trying to get out...");
 
                 while (HasLocalChanges)
                     ResolveConflict ();
 
-                SparkleHelpers.DebugInfo ("Git", Name + " | Conflict resolved");
+                SparkleHelpers.DebugInfo ("Gitbin", Name + " | Conflict resolved");
                 OnConflictResolved ();
             }
         }
@@ -500,7 +500,7 @@ namespace SparkleLib.Gitbin {
                 string conflicting_path = line.Substring (3);
                 conflicting_path = conflicting_path.Trim ("\"".ToCharArray ());
 
-                SparkleHelpers.DebugInfo ("Git", Name + " | Conflict type: " + line);
+                SparkleHelpers.DebugInfo ("Gitbin", Name + " | Conflict type: " + line);
 
                 // Both the local and server version have been modified
                 if (line.StartsWith ("UU") || line.StartsWith ("AA") ||
@@ -772,7 +772,7 @@ namespace SparkleLib.Gitbin {
     
                         if (File.Exists (HEAD_file_path)) {
                             File.Move (HEAD_file_path, HEAD_file_path + ".backup");
-                            SparkleHelpers.DebugInfo ("Git", Name + " | Renamed " + HEAD_file_path);
+                            SparkleHelpers.DebugInfo ("Gitbin", Name + " | Renamed " + HEAD_file_path);
                         }
     
                         continue;
@@ -790,13 +790,13 @@ namespace SparkleLib.Gitbin {
                             File.WriteAllText (Path.Combine (path, ".empty"), "I'm a folder!");
                             File.SetAttributes (Path.Combine (path, ".empty"), FileAttributes.Hidden);
                         } catch {
-                            SparkleHelpers.DebugInfo ("Git", Name + " | Failed adding empty folder " + path);
+                            SparkleHelpers.DebugInfo ("Gitbin", Name + " | Failed adding empty folder " + path);
                         }
                     }
                 }
 
             } catch (IOException e) {
-                SparkleHelpers.DebugInfo ("Git", "Failed preparing directory: " + e.Message);
+                SparkleHelpers.DebugInfo ("Gitbin", "Failed preparing directory: " + e.Message);
             }
         }
 
