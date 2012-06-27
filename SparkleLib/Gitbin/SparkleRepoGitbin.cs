@@ -193,8 +193,7 @@ namespace SparkleLib.Gitbin {
 		    //gitbin will need to have support for empty binary files added
 		    //scp backend ideally will be needed for git-bin
 		    SparkleGit gitbin = new SparkleGit (LocalPath,
-		    "bin push" +
-            "\"" + RemoteUrl + "\" master");
+		    "bin push");
 
             //gitbin.StartInfo.RedirectStandardError = true;
             gitbin.Start ();
