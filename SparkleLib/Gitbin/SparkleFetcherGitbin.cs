@@ -316,7 +316,7 @@ namespace SparkleLib.Gitbin {
                 "\tpackedGitLimit = 128m" + n +
                 "\tautocrlf = false" + n +
                 "\tsafecrlf = false" + n +
-                "\bigFileThreshold = 2g" + n +
+                "\tbigFileThreshold = 2g" + n +
                 "\tpackedGitWindowSize = 128m" + n);
 
             config = config.Replace ("[remote \"origin\"]" + n,
