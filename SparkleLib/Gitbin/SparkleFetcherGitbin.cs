@@ -151,7 +151,7 @@ namespace SparkleLib.Gitbin {
             
             this.git.WaitForExit ();
 
-            SparkleHelpers.DebugInfo ("Gitbin", "Exit code: " + this.git.ExitCode);
+            SparkleHelpers.DebugInfo ("Git-bin", "Exit code: " + this.git.ExitCode);
 
             if (this.git.ExitCode == 0) {
                 while (percentage < 100) {
