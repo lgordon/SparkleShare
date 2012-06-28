@@ -232,7 +232,7 @@ namespace SparkleLib {
             process.StartInfo.CreateNoWindow         = true;
 
             process.StartInfo.FileName  = "ssh-keygen";
-            process.StartInfo.Arguments = "-lf " + tmp_file_path;
+            process.StartInfo.Arguments = "-lf \"" + tmp_file_path + "\"";
 
             process.Start ();
 
@@ -240,6 +240,8 @@ namespace SparkleLib {
             // WaitForExit, or it will hang forever on output > 4096 bytes
             string fingerprint = process.StandardOutput.ReadToEnd ().Trim ();
             process.WaitForExit ();
+            
+            File.Delete (tmp_file_path);
 
             try {
                 fingerprint = fingerprint.Substring (fingerprint.IndexOf (" ") + 1, 47);
@@ -248,8 +250,6 @@ namespace SparkleLib {
                 SparkleHelpers.DebugInfo ("Fetcher", "Not a valid fingerprint: " + e.Message);
                 return null;
             }
-
-            File.Delete (tmp_file_path);
 
             return fingerprint;
         }
